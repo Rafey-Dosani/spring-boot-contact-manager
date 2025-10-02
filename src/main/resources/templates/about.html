@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::parent(~{::title},~{::section},~{::script})}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | SCM</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+
+<!-- 🌟 Hero Section -->
+<section class="relative bg-gradient-to-r from-blue-100 via-blue-50 to-white dark:from-gray-800 dark:to-gray-900 py-10">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
+      About <span class="text-blue-600">Smart Contact Manager</span>
+    </h1>
+    <p class="mt-6 text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-4">
+      Smart Contact Manager (SCM) helps you manage your contacts seamlessly. With a focus on 
+      <strong>simplicity, security, and speed</strong>, we are building a tool that makes your digital life easier.
+    </p>
+  </div>
+</section>
+
+<!-- 🌟 Mission & Vision -->
+<section class="max-w-7xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-12 items-center">
+  <div class="flex flex-col justify-center">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Mission & Vision</h2>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      <strong>Mission:</strong> Simplify contact management and make it secure for everyone.
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      <strong>Vision:</strong> Become the most trusted digital contact organizer worldwide.
+    </p>
+  </div>
+  <div class="flex justify-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" 
+         alt="Mission & Vision" class="w-3/4 rounded-2xl shadow-2xl">
+  </div>
+</section>
+
+<!-- 🌟 How SCM Works -->
+<section class="max-w-7xl mx-auto px-4 py-8 text-center">
+  <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">How SCM Works</h2>
+  <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+    Organizing and managing contacts is easy with SCM. Follow these simple steps:
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-10">
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+      <i class="fas fa-user-plus text-4xl text-blue-600 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Add Contacts</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Quickly add new contacts with essential details.
+      </p>
+    </div>
+
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+      <i class="fas fa-folder-open text-4xl text-green-600 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Organize</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Categorize and manage contacts effortlessly.
+      </p>
+    </div>
+
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+      <i class="fas fa-shield-alt text-4xl text-purple-600 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Secure Access</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Access your contacts anytime with full security and encryption.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 🌟 Core Values -->
+<section class="max-w-7xl mx-auto px-4 py-16 text-center">
+  <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Core Values</h2>
+  <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+    These values guide how we build and grow SCM every day.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+      <i class="fas fa-lock text-4xl text-blue-600 mb-4"></i>
+      <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Privacy First</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Protecting your personal data with end-to-end encryption.
+      </p>
+    </div>
+
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+      <i class="fas fa-bolt text-4xl text-green-600 mb-4"></i>
+      <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Simplicity</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Easy-to-use interface, no clutter, no complications.
+      </p>
+    </div>
+
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+      <i class="fas fa-users text-4xl text-purple-600 mb-4"></i>
+      <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Community</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Evolving SCM with user feedback for a product that serves your needs.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 🌟 Why Choose SCM -->
+<section class="max-w-7xl mx-auto px-4 py-16 text-center">
+  <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Why Choose SCM?</h2>
+  <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+    Discover the unique features and benefits that make Smart Contact Manager the right choice for you.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-10">
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 text-center">
+      <i class="fas fa-lock text-4xl text-blue-600 dark:text-blue-400 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Privacy & Security</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        All your contacts are encrypted and accessible only to you.
+      </p>
+    </div>
+
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 text-center">
+      <i class="fas fa-bolt text-4xl text-green-600 dark:text-green-400 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Fast & Reliable</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Quick, seamless access to all your contacts anytime, anywhere.
+      </p>
+    </div>
+
+    <div class="p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 text-center">
+      <i class="fas fa-star text-4xl text-purple-600 dark:text-purple-400 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Trusted by Users</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Thousands of users rely on SCM for secure and organized contact management.
+      </p>
+    </div>
+  </div>
+</section>
+
+</body>
+<script>
+  console.log("About page loaded successfully ✅");
+</script>
+</html>

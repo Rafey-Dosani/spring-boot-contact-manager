@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org"  th:fragment="parent(tittle,content,script)"
+
+>
+<head >
+
+  
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="${tittle}">Document</title>
+    <link rel="stylesheet" th:href="@{'/css/output.css'}">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" data-th-href="@{'/css/style.css'}">
+
+
+    
+</head>
+<body class="dark:bg-gray-900 bg-gray-300">
+
+    <!--Common HEader -->
+
+    <!--If user is logged in : navbar -->
+    <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+    </div>
+
+   
+
+    <!--If user is not logged in :Navbar-->
+    <div th:unless="${loggedInUser}">
+   <div th:replace="~{navbar::navbar}"></div>
+        </div>
+ 
+
+    <main class="pt-20">
+    <section th:replace="${content}"></section>
+   
+</main>
+
+    <footer class="p-4">footer of our layout</footer>
+
+
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+        <th:block th:replace="${script}"></th:block>
+      
+
+
+
+</body>
+</html>

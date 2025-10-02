@@ -1,0 +1,231 @@
+<!doctype html>
+<html th:replace="~{base::parent(~{::title},~{::#content},~{::script})}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-th-text="${loggedInUser.name}+' | DashBoard'">Add Contact</title>
+</head>
+
+<body>
+  <div id="content">
+    <!--If user is logged in : side bar -->
+    <div th:if="${loggedInUser}">
+      <div data-th-replace="~{user/sidebar::sidebar}"></div>
+    </div>
+
+    <div class="pl-64 pt-14" style="height: 2000px;">
+      <div class="grid grid-cols-12">
+        <div class="col-span-3"></div> <!-- left space -->
+        <div class="col-span-6 ">
+          <div
+            class="card block p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+
+            <h1 class="text-2xl font-semibold dark:text-white">Add New Contact</h1>
+            <p class="text-gray-400 mt-2">
+              The contact will be stored on cloud, you can directly email this client from QuickConnect
+            </p>
+
+            <!--Form-->
+            <form class="mt-8"
+                  data-th-action="@{/user/contacts/add}"
+                  data-th-object="${contactForm}"
+                  method="post"
+                  enctype="multipart/form-data">
+
+              <!-- 🔴 Validation Errors on top -->
+              <div th:if="${#fields.hasErrors('*')}"
+                   class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                <ul class="list-disc pl-5">
+                  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                </ul>
+              </div>
+
+              <!-- 🔵 Success / Error Message on top -->
+              <div th:if="${message != null}" 
+                   th:classappend="${message.type.name() == 'green'} ? 'bg-green-300 border-green-400 text-black' : 'bg-red-100 border-red-400 text-red-700'"
+                   class="mb-6 p-4 border rounded-lg">
+                <p th:text="${message.content}"></p>
+              </div>
+
+              <!-- Name -->
+              <div class="mb-4 ">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Contact Name
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <i class="fa-solid fa-user text-base text-gray-700 dark:text-gray-300"></i>
+                  </div>
+                  <input type="text" id="name"
+                         data-th-field="*{name}"
+                         placeholder="name"
+                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  
+                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                                dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-4">
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Contact Email
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <i class="fa-solid fa-envelope text-base text-gray-700 dark:text-gray-300"></i>
+                  </div>
+                  <input type="text" id="email"
+                         data-th-field="*{email}"
+                         placeholder="example@gmail.com"
+                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  
+                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                                dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+              </div>
+
+              <!-- Phone Number -->
+              <div class="mb-4">
+                <label for="phoneNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Contact Phone
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <i class="fa-solid fa-phone text-base text-gray-700 dark:text-gray-300"></i>
+                  </div>
+                  <input type="text" id="phoneNumber"
+                         data-th-field="*{phoneNumber}"
+                         placeholder="9241268492"
+                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  
+                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                                dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="mb-4">
+                <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Contact Address
+                </label>
+                <textarea id="address"
+                          data-th-field="*{address}"
+                          rows="3"
+                          placeholder="Enter contact address here..."
+                          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border 
+                                 border-gray-300 focus:ring-blue-500 focus:border-blue-500 
+                                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                                 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+              </div>
+
+              <!-- Description -->
+              <div class="mb-4">
+                <label for="discription" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Contact Description
+                </label>
+                <textarea id="discription"
+                          data-th-field="*{discription}"
+                          rows="3"
+                          placeholder="Write about the contact..."
+                          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border 
+                                 border-gray-300 focus:ring-blue-500 focus:border-blue-500 
+                                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                                 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+              </div>
+
+              <!-- Social Links -->
+              <div class="flex space-x-3 mb-4">
+                <div class="w-1/2">
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="fa-solid fa-earth-americas text-base text-gray-700 dark:text-gray-300"></i>
+                    </div>
+                    <input type="text"
+                           data-th-field="*{websiteLink}"
+                           placeholder="http://www.example.com"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                  focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  
+                                  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                                  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  </div>
+                </div>
+
+                <div class="w-1/2">
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                      <i class="fa-brands fa-linkedin text-base text-gray-700 dark:text-gray-300"></i>
+                    </div>
+                    <input type="text"
+                           data-th-field="*{linkedInLink}"
+                           placeholder="https://www.linkedin.com"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                  focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  
+                                  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                                  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile Image -->
+              <div class="mb-4">
+                <label for="file_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Contact Image
+                </label>
+                <input 
+                id="image_file_input"
+                type="file"
+                       data-th-field="*{contactImage}"
+                       class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer 
+                              bg-gray-50 focus:outline-none 
+                              dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400">
+
+                              <img class="max-h-50 mx-auto rounded-lg shadow m-3"3.
+                              
+                              src="" id="upload_image_preview" alt="">
+              </div>
+
+              <!-- Favorite -->
+              <div class="flex items-center mb-4">
+                <input type="checkbox"
+                       data-th-field="*{favorite}"
+                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm 
+                              focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 
+                              focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="favorite" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  Is this your favorite contact?
+                </label>
+              </div>
+
+              <!-- Buttons -->
+              <div class="flex justify-center space-x-4 mt-6">
+                <button type="submit"
+                        class="px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 
+                               focus:ring-4 focus:outline-none focus:ring-blue-300 
+                               dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+                  Submit
+                </button>
+
+                <button type="reset"
+                        class="px-6 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 
+                               focus:ring-4 focus:outline-none focus:ring-gray-300
+                               dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500 dark:focus:ring-gray-800">
+                  Reset
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <div class="col-span-3"></div> <!-- right space -->
+      </div>
+    </div>
+
+    <script data-th-src="@{'/js/admin.js'}"></script>
+  <script th:fragment="script">
+    console.log("I am console on home");
+  </script>
+
+</body>
+</html>

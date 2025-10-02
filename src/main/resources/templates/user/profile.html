@@ -1,0 +1,88 @@
+<!doctype html>
+<html th:replace="~{base::parent(~{::title},~{::#content},~{::script})}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-th-text="${loggedInUser.name} + ' | Profile'">Profile</title>
+</head>
+<body class="bg-gray-900 text-white">
+
+<div id="content">
+  <!-- Sidebar -->
+  <div th:if="${loggedInUser}">
+    <div data-th-replace="~{user/sidebar::sidebar}"></div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="sm:pl-64 pt-16 flex justify-center min-h-screen">
+
+    <div class="w-full max-w-5xl p-8 space-y-12">
+
+      <!-- Hero Welcome Section -->
+      <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl p-12 text-center">
+        <h1 class="text-6xl font-extrabold mb-4" th:text="'Welcome, ' + ${loggedInUser.name} + '!'">Welcome, User!</h1>
+        <p class="text-xl text-gray-100 mb-2">
+          You are now on your profile page in <span class="font-bold">Quick Connect - Smart Contact Manager</span>.
+        </p>
+        <p class="text-gray-200 max-w-2xl mx-auto">
+          Quick Connect helps you manage your contacts efficiently. Organize, search, and access your connections quickly—all in one secure place.
+        </p>
+      </div>
+
+      <!-- User Information Card -->
+      <div class="bg-gray-800 rounded-3xl shadow-lg p-10 space-y-6">
+        <h2 class="text-4xl font-bold border-b border-gray-700 pb-4 mb-6 text-gray-100 dark:text-white pl-3.5 pt-5">Account Information</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4">
+          <div class="flex flex-col">
+            <span class="font-semibold text-gray-300">Full Name</span>
+            <span class="text-white text-lg" th:text="${loggedInUser.name}">User Name</span>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="font-semibold text-gray-300">Username</span>
+            <span class="text-white text-lg" th:text="${loggedInUser.username}">username123</span>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="font-semibold text-gray-300 ">Email</span>
+            <span class="text-white text-lg" th:text="${loggedInUser.email}">user@example.com</span>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="font-semibold text-gray-300">Phone</span>
+            <span class="text-white text-lg pb-5" th:text="${loggedInUser.phoneNumber}">+91 1234567890</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- About App Section -->
+      <div class="bg-gray-800 rounded-3xl shadow-lg p-10 space-y-4 px-4 mt-5">
+        <h2 class="text-4xl font-bold border-b border-gray-700 pb-4 mb-4 text-gray-100 dark:text-white pt-5">About Quick Connect</h2>
+        <p class="text-gray-100 text-lg dark:text-white">
+          Quick Connect is your intelligent contact manager that makes keeping track of your professional and personal connections easy and fast. 
+          From contact organization to quick communication, manage all your contacts in a secure and convenient way.
+        </p>
+        <p class="text-gray-300 text-lg">
+          You can explore features like quick search, categorized contacts, and upcoming updates will bring even more smart functionalities.
+        </p>
+      </div>
+
+      <!-- Optional Section: Motivational Message / Tips -->
+      <div class="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-3xl shadow-2xl p-8 text-center px-4">
+        <h3 class="text-3xl font-bold mb-2 text-gray-100">Tip of the Day</h3>
+        <p class="text-gray-100 text-lg max-w-xl mx-auto">
+          Keep your contacts updated regularly! The more organized your contact list, the more powerful Quick Connect becomes for you.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script th:fragment="script">
+  console.log("Enhanced Profile page loaded for user");
+</script>
+
+</body>
+</html>
